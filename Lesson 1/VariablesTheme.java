@@ -40,87 +40,82 @@ public class VariablesTheme {
         int maxInt = 2_147_483_647;
         long maxLong = 9_223_372_036_854_775_807L;
         System.out.print("byte: " + maxByte + ", ");
-        byte minByte = ++maxByte;
-        System.out.print(minByte + ", ");
-        byte maxByte2 = --minByte;
-        System.out.println(maxByte2);
+        System.out.println(++maxByte + ", " + --maxByte + ".");
         System.out.print("short: " + maxShort + ", ");
-        short minShort = ++maxShort;
-        System.out.print(minShort + ", ");
-        short maxShort2 = --minShort;
-        System.out.println(maxShort2);
+        System.out.println(++maxShort + ", " + --maxShort + ".");
         System.out.print("int: " + maxInt + ", ");
-        int minInt = ++maxInt;
-        System.out.print(minInt + ", ");
-        int maxInt2 = --minInt;
-        System.out.println(maxInt2);
+        System.out.println(++maxInt + ", " + --maxInt + ".");
         System.out.print("long: " + maxLong + ", ");
-        long minLong = ++maxLong;
-        System.out.print(minLong + ", ");
-        long maxLong2 = --minLong;
-        System.out.println(maxLong2);
+        System.out.println(++maxLong + ", " + --maxLong + ".");
+
 
         System.out.println("\nЗадача 5. Перестановка значений переменных");
-        int num1 = 2, num2 = 5, num3;
+        int num1 = 2;
+        int num2 = 5;
+        int num3;
         num3 = num1;
         num1 = num2;
         num2 = num3;
         System.out.println("Метод третьей переменной: исходные значения переменных равны " + num2 +
                 ", " + num1 + ". Новые значения переменных равны " + num1 + ", " + num2 + ".");
-        num1 = num1 + num2;
+        num1 += num2;
         num2 = num1 - num2;
-        num1 = num1 - num2;
-        System.out.println("Метод арифмитических операций: исходные значения переменных равны " +
+        num1 -= num2;
+        System.out.println("Метод арифметических операций: исходные значения переменных равны " +
                 num2 + ", " + num1 + ". Новые значения переменных равны " + num1 + ", " + num2 + ".");
-        num1 = num1 ^ num2;
-        num2 = num2 ^ num1;
-        num1 = num1 ^ num2;
+        num1 ^= num2;
+        num2 ^= num1;
+        num1 ^= num2;
         System.out.println("Метод побитовых операций: исходные значения переменных равны " + num2 +
                 ", " + num1 + ". Новые значения переменных равны " + num1 + ", " + num2 + ".");
 
         System.out.println("\nЗадача 6. Вывод символов и их кодов");
-        char symbol35 = '#', symbol38 = '&', symbol64 = '@', symbol94 = '^', symbol95 = '_';
-        int codeSymbol31 = (int) symbol35;
+        char symbol35 = '#';
+        char symbol38 = '&';
+        char symbol64 = '@';
+        char symbol94 = '^';
+        char symbol95 = '_';
+        int codeSymbol35 = (int) symbol35;
         int codeSymbol38 = (int) symbol38;
         int codeSymbol64 = (int) symbol64;
         int codeSymbol94 = (int) symbol94;
         int codeSymbol95 = (int) symbol95;
-        System.out.println("Код символа: " + codeSymbol31 + ". Символ из ASCII-таблицы: " + 
-            symbol35 + ".");
-        System.out.println("Код символа: " + codeSymbol38 + ". Символ из ASCII-таблицы: " + 
-            symbol38 + ".");
-        System.out.println("Код символа: " + codeSymbol64 + ". Символ из ASCII-таблицы: " + 
-            symbol64 + ".");
-        System.out.println("Код символа: " + codeSymbol94 + ". Символ из ASCII-таблицы: " + 
-            symbol94 + ".");
-        System.out.println("Код символа: " + codeSymbol95 + ". Символ из ASCII-таблицы: " + 
-            symbol95 + ".");
+        System.out.println("Код символа: " + codeSymbol35 + ". Символ из ASCII-таблицы: " +
+                symbol35 + ".");
+        System.out.println("Код символа: " + codeSymbol38 + ". Символ из ASCII-таблицы: " +
+                symbol38 + ".");
+        System.out.println("Код символа: " + codeSymbol64 + ". Символ из ASCII-таблицы: " +
+                symbol64 + ".");
+        System.out.println("Код символа: " + codeSymbol94 + ". Символ из ASCII-таблицы: " +
+                symbol94 + ".");
+        System.out.println("Код символа: " + codeSymbol95 + ". Символ из ASCII-таблицы: " +
+                symbol95 + ".");
 
         System.out.println("\nЗадача 7. Вывод в консоль ASCII-арт Дюка");
-        char symbol1 = '·', symbol2 = '/', symbol3 = '\\', symbol4 = '_', symbol5 = '(', 
-        symbol6 = ')', symbol7 = '¤';
-        System.out.println(symbol1 + "" + symbol1 + "" + symbol1 + "" + symbol1 + "" + symbol2 + 
-            "" + symbol3 + "" + symbol1 + "" + symbol1 + "" + symbol1 + "" + symbol1 + "" + symbol1);
-        System.out.println(symbol1 + "" + symbol1 + "" + symbol1 + "" + symbol2 + "" + symbol1 + 
-            "" + symbol1 + "" + symbol3 + "" + symbol1 + "" + symbol1 + "" + symbol1 + "" + symbol1);
-        System.out.println(symbol1 + "" + symbol1 + "" + symbol2 + "" + symbol4 + "" + symbol5 + 
-            "" + symbol1 + "" + symbol6 + "" + symbol3 + "" + symbol1 + "" + symbol1 + "" + symbol1);
-        System.out.println(symbol1 + "" + symbol2 + "" + symbol1 + "" + symbol1 + "" + symbol1 + 
-            "" + symbol1 + "" + symbol1 + "" + symbol1 + "" + symbol3 + "" + symbol1 + "" + symbol1);
-        System.out.println(symbol2 + "" + symbol4 + "" + symbol4 + "" + symbol4 + "" + symbol4 + 
-            "" + symbol2 + "" + symbol3 + "" + symbol4 + "" + symbol4 + "" + symbol3 + "" + symbol7);
+        char forwardSlash = '/';
+        char backSlash = '\\';
+        char lowHyphen = '_';
+        char openParenthesis = '(';
+        char closeParenthesis = ')';
+        System.out.println("    " + forwardSlash + backSlash + "     ");
+        System.out.println("   " + forwardSlash + "  " + backSlash + "    ");
+        System.out.println("  " + forwardSlash + lowHyphen + openParenthesis + " " + 
+                closeParenthesis + backSlash + "   ");
+        System.out.println(" " + forwardSlash + "      " + backSlash + "  ");
+        System.out.println(forwardSlash + "" + lowHyphen + lowHyphen + lowHyphen + lowHyphen + 
+                forwardSlash + backSlash + lowHyphen + lowHyphen + backSlash);
 
         System.out.println("\nЗадача 8. Вывод количества сотен, десятков и единиц числа");
-        int n = 123;
-        int x = n / 100;
-        int y = (n % 100) / 10;
-        int z = n % 10;
-        int multiplication = x * y * z;
-        int sum = x + y + z;
-        System.out.println("Число " + n + " содержит: " + x + " сотню, " + y + " десятка, " + 
-            z + " единицы.");
-        System.out.println("Cумма его цифр = " + sum + ", произведение его цифр = " + 
-            multiplication + ".");
+        int numeral = 123;
+        int hundreds = numeral / 100;
+        int dozens = (numeral % 100) / 10;
+        int units = numeral % 10;
+        int multiplication = hundreds * dozens * units;
+        int sum = hundreds + dozens + units;
+        System.out.println("Число " + numeral + " содержит: " + hundreds + " сотню, " + dozens + 
+                " десятка, " + units + " единицы.");
+        System.out.println("Сумма его цифр = " + sum + ", произведение его цифр = " +
+                multiplication + ".");
 
         System.out.println("\nЗадача 9. Вывод времени");
         int secondsTotal = 86399;
@@ -128,6 +123,5 @@ public class VariablesTheme {
         int minutes = (secondsTotal % 3600) / 60;
         int seconds = secondsTotal % 60;
         System.out.println(hours + ":" + minutes + ":" + seconds);
-
     }
 }
