@@ -48,12 +48,10 @@ public class VariablesTheme {
         System.out.print("long: " + maxLong + ", ");
         System.out.println(++maxLong + ", " + --maxLong + ".");
 
-
         System.out.println("\nЗадача 5. Перестановка значений переменных");
         int num1 = 2;
         int num2 = 5;
-        int num3;
-        num3 = num1;
+        int num3 = num1;
         num1 = num2;
         num2 = num3;
         System.out.println("Метод третьей переменной: исходные значения переменных равны " + num2 +
@@ -75,45 +73,40 @@ public class VariablesTheme {
         char symbol64 = '@';
         char symbol94 = '^';
         char symbol95 = '_';
-        int codeSymbol35 = (int) symbol35;
-        int codeSymbol38 = (int) symbol38;
-        int codeSymbol64 = (int) symbol64;
-        int codeSymbol94 = (int) symbol94;
-        int codeSymbol95 = (int) symbol95;
-        System.out.println("Код символа: " + codeSymbol35 + ". Символ из ASCII-таблицы: " +
+        System.out.println("Код символа: " + (int) symbol35 + ". Символ из ASCII-таблицы: " +
                 symbol35 + ".");
-        System.out.println("Код символа: " + codeSymbol38 + ". Символ из ASCII-таблицы: " +
+        System.out.println("Код символа: " + (int) symbol38 + ". Символ из ASCII-таблицы: " +
                 symbol38 + ".");
-        System.out.println("Код символа: " + codeSymbol64 + ". Символ из ASCII-таблицы: " +
+        System.out.println("Код символа: " + (int) symbol64 + ". Символ из ASCII-таблицы: " +
                 symbol64 + ".");
-        System.out.println("Код символа: " + codeSymbol94 + ". Символ из ASCII-таблицы: " +
+        System.out.println("Код символа: " + (int) symbol94 + ". Символ из ASCII-таблицы: " +
                 symbol94 + ".");
-        System.out.println("Код символа: " + codeSymbol95 + ". Символ из ASCII-таблицы: " +
+        System.out.println("Код символа: " + (int) symbol95 + ". Символ из ASCII-таблицы: " +
                 symbol95 + ".");
 
         System.out.println("\nЗадача 7. Вывод в консоль ASCII-арт Дюка");
-        char forwardSlash = '/';
+        char slash = '/';
         char backSlash = '\\';
-        char lowHyphen = '_';
+        char lowLine = '_';
         char openParenthesis = '(';
         char closeParenthesis = ')';
-        System.out.println("    " + forwardSlash + backSlash + "     ");
-        System.out.println("   " + forwardSlash + "  " + backSlash + "    ");
-        System.out.println("  " + forwardSlash + lowHyphen + openParenthesis + " " + 
+        System.out.println("    " + slash + backSlash + "     ");
+        System.out.println("   " + slash + "  " + backSlash + "    ");
+        System.out.println("  " + slash + lowLine + openParenthesis + " " + 
                 closeParenthesis + backSlash + "   ");
-        System.out.println(" " + forwardSlash + "      " + backSlash + "  ");
-        System.out.println(forwardSlash + "" + lowHyphen + lowHyphen + lowHyphen + lowHyphen + 
-                forwardSlash + backSlash + lowHyphen + lowHyphen + backSlash);
+        System.out.println(" " + slash + "      " + backSlash + "  ");
+        System.out.println(slash + "" + lowLine + lowLine + lowLine + lowLine + slash + backSlash + 
+                lowLine + lowLine + backSlash);
 
         System.out.println("\nЗадача 8. Вывод количества сотен, десятков и единиц числа");
-        int numeral = 123;
-        int hundreds = numeral / 100;
-        int dozens = (numeral % 100) / 10;
-        int units = numeral % 10;
-        int multiplication = hundreds * dozens * units;
-        int sum = hundreds + dozens + units;
-        System.out.println("Число " + numeral + " содержит: " + hundreds + " сотню, " + dozens + 
-                " десятка, " + units + " единицы.");
+        int srcNum = 123;
+        int hundreds = srcNum / 100;
+        int tens = (srcNum % 100) / 10;
+        int ones = srcNum % 10;
+        int multiplication = hundreds * tens * ones;
+        int sum = hundreds + tens + ones;
+        System.out.println("Число " + srcNum + " содержит: " + hundreds + " сотню, " + tens + 
+                " десятка, " + ones + " единицы.");
         System.out.println("Сумма его цифр = " + sum + ", произведение его цифр = " +
                 multiplication + ".");
 
