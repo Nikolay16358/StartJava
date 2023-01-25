@@ -47,11 +47,12 @@ public class IfElseStatementTheme {
 
         System.out.println("\nЗадача 3. Проверка числа");
         int srcNum = 11;
+        System.out.print("Исходное число равно " + srcNum + ".");
         if (srcNum != 0) {
             if (srcNum % 2 == 0) {
-                System.out.print("Исходное число равно " + srcNum + ". Это число четное и ");
+                System.out.print(" Это число четное и ");
             } else {
-                System.out.print("Исходное число равно " + srcNum + ". Это число нечетное и ");
+                System.out.print(" Это число нечетное и ");
             }
 
             if (srcNum > 0) {
@@ -60,7 +61,7 @@ public class IfElseStatementTheme {
                 System.out.println("отрицательное.");
             }
         } else {
-            System.out.println("Исходное число равно 0.");
+            System.out.print("\n");
         }
 
         System.out.println("\nЗадача 4. Поиск одинаковых цифр в числах");
@@ -68,8 +69,8 @@ public class IfElseStatementTheme {
         int srcNum2 = 123;
         int hundreds1 = srcNum1 / 100;
         int hundreds2 = srcNum2 / 100;
-        int tens1 = (srcNum1 % 100) / 10;
-        int tens2 = (srcNum2 % 100) / 10;
+        int tens1 = srcNum1 / 10 % 10;
+        int tens2 = srcNum2 / 10 % 10;
         int ones1 = srcNum1 % 10;
         int ones2 = srcNum2 % 10;
         System.out.println("Исходные числа: " + srcNum1 + " и " + srcNum2 + ".");
@@ -110,9 +111,7 @@ public class IfElseStatementTheme {
         float bankRate = 0.07f;
         if (deposit < 100_000) {
             bankRate = 0.05f;
-        }
-
-        if (deposit > 300_000) {
+        } else if (deposit > 300_000) {
             bankRate = 0.10f;
         }
 
@@ -157,14 +156,12 @@ public class IfElseStatementTheme {
         int totalIncome = (sales - netCost - rent) * monthsCount;
         if (totalIncome > 0) {
             System.out.println("Прибыль за год: +" + totalIncome + " рублей.");
-        }
-
-        if (totalIncome <= 0) {
+        } else {
             System.out.println("Прибыль за год: " + totalIncome + " рублей.");
         }
 
         System.out.println("\nЗадача 9. Подсчет количества банкнот");
-        int sum = 783;
+        int sum = 567;
         int sumToCheck = sum;
         int totalSum;
         int banknotesInAtm100 = 10;
