@@ -176,9 +176,20 @@ public class CyclesTheme {
         System.out.println("\nЗадача 8. Проверка, является ли число палиндромом");
         int srcNum5 = 1_234_321;
         int srcNum6 = srcNum5;
+        int srcNum7 = srcNum5;
         int result = 0;
-        int multiplier = 1_000_000;
-        for (int counter8 = 0; counter8 < 7; counter8++) {
+        int countOfDigits3 = 0;
+        int multiplier = 1;
+        do {
+            srcNum7 /= 10;
+            countOfDigits3++;
+        } while (srcNum7 > 0);
+
+        for (int counter8 = 1; counter8 < countOfDigits3; counter8++) {
+            multiplier *= 10;
+        }
+
+        for (int meter8 = 0; meter8 < countOfDigits3; meter8++) {
             int remainder = srcNum6 % 10;
             srcNum6 /= 10;
             result += remainder * multiplier;
@@ -190,23 +201,23 @@ public class CyclesTheme {
         }
 
         System.out.println("\nЗадача 9. Определение, является ли число счастливым");
-        int srcNum7 = 383_905;
-        int firstHalfSrcNum4 = srcNum7 / 1000;
-        int secondHalfSrcNum4 = srcNum7 % 1000;
+        int srcNum8 = 383_905;
+        int firstHalfSrcNum8 = srcNum8 / 1000;
+        int secondHalfSrcNum8 = srcNum8 % 1000;
         int firstSum = 0;
         int secondSum = 0;
         for (int counter9 = 0; counter9 < 3; counter9++) {
-            int firstDigitNum = firstHalfSrcNum4 % 10;
-            firstHalfSrcNum4 /= 10;
+            int firstDigitNum = firstHalfSrcNum8 % 10;
+            firstHalfSrcNum8 /= 10;
             firstSum += firstDigitNum;
-            int secondDigitNum = secondHalfSrcNum4 % 10;
-            secondHalfSrcNum4 /= 10;
+            int secondDigitNum = secondHalfSrcNum8 % 10;
+            secondHalfSrcNum8 /= 10;
             secondSum += secondDigitNum;
         }
 
-        System.out.println("Сумма цифр " + (srcNum7 / 1000) + " = " + firstSum +
-                ", а сумма цифр " + (srcNum7 % 1000) + " = " + secondSum + ".");
-        System.out.print("Число " + srcNum7 + " является ");
+        System.out.println("Сумма цифр " + (srcNum8 / 1000) + " = " + firstSum +
+                ", а сумма цифр " + (srcNum8 % 1000) + " = " + secondSum + ".");
+        System.out.print("Число " + srcNum8 + " является ");
         if (firstSum == secondSum) {
             System.out.println("счастливым.");
         } else {
