@@ -21,17 +21,21 @@ public class CyclesTheme {
         int num1 = 10;
         int num2 = 5;
         int num3 = -1;
-        int max = num1;
-        int min = num2;
-        if (num2 > num1 && num2 > num3) {
-            max = num2;
-        } else if (num3 > num1 && num3 > num2) {
+        int max = num2;
+        int min = num1;
+        if (num1 > max) {
+            max = num1;
+        }
+
+        if (num3 > max) {
             max = num3;
         }
 
-        if (num1 < num2 && num1 < num3) {
-            min = num1;
-        } else if (num3 < num1 && num3 < num2) {
+        if (num2 < min) {
+            min = num2;
+        }
+
+        if (num3 < min) {
             min = num3;
         }
 
@@ -56,7 +60,7 @@ public class CyclesTheme {
         int endOfInterval = 24;
         int count = 0;
         for (int i = startOfSegment; i < endOfInterval; i += 2) {
-            if (count % 5 == 0 && i != startOfSegment) {
+            if (count % 5 == 0) {
                 System.out.println();
             }
             System.out.printf("%3d", i);
@@ -88,90 +92,83 @@ public class CyclesTheme {
         }
 
         System.out.println("\nЗадача 6. Отображение фигур в консоли");
-        char symbol42 = '*';
-        char symbol35 = '#';
-        char symbol36 = '$';
-        int counter35 = 4;
-        int meter35 = 4;
-        int counter36 = 0;
-        int meter36 = 0;
+        int numberStarSymbol = 42;
         for (int i = 0; i < 5; i++) {
-            System.out.print(symbol42);
+            System.out.print((char) numberStarSymbol);
             for (int j = 0; j < 9; j++) {
-                System.out.print(symbol42);
+                System.out.print((char) numberStarSymbol);
             }
 
             System.out.println();
         }
 
         System.out.println();
-        while (counter35 >= 0) {
-            System.out.print(symbol35);
-            while (meter35 > 0) {
-                System.out.print(symbol35);
-                meter35--;
+        int stringsNumber = 4;
+        int columnsNumber = 4;
+        int numberGridSymbol = 35;
+        while (stringsNumber >= 0) {
+            System.out.print((char) numberGridSymbol);
+            while (columnsNumber > 0) {
+                System.out.print((char) numberGridSymbol);
+                columnsNumber--;
             }
 
-            meter35 = counter35 - 1;
-            counter35--;
+            columnsNumber = stringsNumber - 1;
+            stringsNumber--;
             System.out.println();
         }
 
         System.out.println();
+        int linesNumber = 0;
+        int pillarsNumber = 0;
+        int numberDollarSymbol = 36;
         do {
-            System.out.print(symbol36);
             do {
-                if (counter36 == 2 && meter36 == 2) {
-                    System.out.print(symbol36 + "" + symbol36);
-                } else if ((counter36 == 1 && meter36 == 1) || (counter36 == 3 && meter36 == 3)) {
-                    System.out.print(symbol36);
-                } else {
-                    System.out.print("");
+                if (linesNumber == 2) {
+                    System.out.print((char) numberDollarSymbol + "" + (char) numberDollarSymbol + 
+                            (char) numberDollarSymbol);
+                } else if (linesNumber == 1 || linesNumber == 3) {
+                    System.out.print((char) numberDollarSymbol + "" + (char) numberDollarSymbol);
+                } else if (linesNumber == 0 || linesNumber == 4) {
+                    System.out.print((char) numberDollarSymbol);
                 }
 
-                meter36++;
-            } while (meter36 <= 4);
+                pillarsNumber++;
+            } while (pillarsNumber == 0);
             System.out.println();
-            counter36++;
-            meter36 = counter36;
-        } while (counter36 <= 4);
+            linesNumber++;
+            pillarsNumber = 0;
+        } while (linesNumber < 5);
 
         System.out.println("\nЗадача 7. Отображение ASCII-символов");
         System.out.println("Dec Char");
         for (int i = 1; i < 48; i++) {
             if (i % 2 != 0) {
-                System.out.printf("%3d%5c", i, (char) i);
-                System.out.println();
+                System.out.printf("%3d%5c\n", i, (char) i);
             }
         }
 
         for (int j = 97; j < 123; j++) {
             if (j % 2 == 0) {
-                System.out.printf("%3d%5c", j, (char) j);
-                System.out.println();
+                System.out.printf("%3d%5c\n", j, (char) j);
             }
         }
 
         System.out.println("\nЗадача 8. Проверка, является ли число палиндромом");
         int srcNum3 = 1_234_321;
         int copySrcNum3 = srcNum3;
-        int secondCopySrcNum3 = srcNum3;
         int result = 0;
-        int multiplier = 1;
-        while (secondCopySrcNum3 > 1) {
-            multiplier *= 10;
-            secondCopySrcNum3 /= 10;
-        }
-
         while (copySrcNum3 > 0) {
             int digit = copySrcNum3 % 10;
             copySrcNum3 /= 10;
-            result += digit * multiplier;
-            multiplier /= 10;
+            result = result * 10 + digit;
         }
 
+        System.out.print("Число " + srcNum3);
         if (result == srcNum3) {
-            System.out.println("Число " + srcNum3 + " является палиндромом");
+            System.out.println(" является палиндромом");
+        } else {
+            System.out.println(" не является палиндромом");
         }
 
         System.out.println("\nЗадача 9. Определение, является ли число счастливым");
@@ -190,12 +187,12 @@ public class CyclesTheme {
         }
 
         System.out.println("Сумма цифр " + (srcNum4 / 1000) + " = " + firstSum +
-                ", а сумма цифр " + (srcNum4 % 1000) + " = " + secondSum + ".");
+                ", а сумма цифр " + (srcNum4 % 1000) + " = " + secondSum);
         System.out.print("Число " + srcNum4 + " является ");
         if (firstSum == secondSum) {
-            System.out.println("счастливым.");
+            System.out.println("счастливым");
         } else {
-            System.out.println("несчастливым.");
+            System.out.println("несчастливым");
         }
 
         System.out.println("\nЗадача 10. Вывод таблицы умножения Пифагора");
