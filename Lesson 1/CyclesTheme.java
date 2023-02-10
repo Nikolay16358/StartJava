@@ -92,24 +92,20 @@ public class CyclesTheme {
         }
 
         System.out.println("\nЗадача 6. Отображение фигур в консоли");
-        int numberStarSymbol = 42;
         for (int i = 0; i < 5; i++) {
-            System.out.print((char) numberStarSymbol);
-            for (int j = 0; j < 9; j++) {
-                System.out.print((char) numberStarSymbol);
+            for (int j = 0; j < 10; j++) {
+                System.out.print('*');
             }
 
             System.out.println();
         }
 
         System.out.println();
-        int stringsNumber = 4;
-        int columnsNumber = 4;
-        int numberGridSymbol = 35;
+        int stringsNumber = 5;
+        int columnsNumber = 5;
         while (stringsNumber >= 0) {
-            System.out.print((char) numberGridSymbol);
             while (columnsNumber > 0) {
-                System.out.print((char) numberGridSymbol);
+                System.out.print('#');
                 columnsNumber--;
             }
 
@@ -118,27 +114,22 @@ public class CyclesTheme {
             System.out.println();
         }
 
-        System.out.println();
-        int linesNumber = 0;
-        int pillarsNumber = 0;
-        int numberDollarSymbol = 36;
+        stringsNumber = 0;
+        columnsNumber = 0;
         do {
             do {
-                if (linesNumber == 2) {
-                    System.out.print((char) numberDollarSymbol + "" + (char) numberDollarSymbol + 
-                            (char) numberDollarSymbol);
-                } else if (linesNumber == 1 || linesNumber == 3) {
-                    System.out.print((char) numberDollarSymbol + "" + (char) numberDollarSymbol);
-                } else if (linesNumber == 0 || linesNumber == 4) {
-                    System.out.print((char) numberDollarSymbol);
-                }
-
-                pillarsNumber++;
-            } while (pillarsNumber == 0);
+                System.out.print('$');
+                columnsNumber++;
+            } while (columnsNumber <= stringsNumber && columnsNumber < 3);
             System.out.println();
-            linesNumber++;
-            pillarsNumber = 0;
-        } while (linesNumber < 5);
+            stringsNumber++;
+            if (stringsNumber < 3) {
+                columnsNumber = 0;
+            } else {
+                columnsNumber = stringsNumber - 2;
+            }
+
+        } while (stringsNumber < 5);
 
         System.out.println("\nЗадача 7. Отображение ASCII-символов");
         System.out.println("Dec Char");
@@ -173,23 +164,23 @@ public class CyclesTheme {
 
         System.out.println("\nЗадача 9. Определение, является ли число счастливым");
         int srcNum4 = 383_905;
-        int firstHalfSrcNum4 = srcNum4 / 1000;
-        int secondHalfSrcNum4 = srcNum4 % 1000;
-        int firstSum = 0;
-        int secondSum = 0;
+        int leftHalfSrcNum4 = srcNum4 / 1000;
+        int rightHalfSrcNum4 = srcNum4 % 1000;
+        int leftSum = 0;
+        int rightSum = 0;
         for (int i = 0; i < 3; i++) {
-            int firstDigitNum = firstHalfSrcNum4 % 10;
-            firstHalfSrcNum4 /= 10;
-            firstSum += firstDigitNum;
-            int secondDigitNum = secondHalfSrcNum4 % 10;
-            secondHalfSrcNum4 /= 10;
-            secondSum += secondDigitNum;
+            int digit = leftHalfSrcNum4 % 10;
+            leftHalfSrcNum4 /= 10;
+            leftSum += digit;
+            digit = rightHalfSrcNum4 % 10;
+            rightHalfSrcNum4 /= 10;
+            rightSum += digit;
         }
 
-        System.out.println("Сумма цифр " + (srcNum4 / 1000) + " = " + firstSum +
-                ", а сумма цифр " + (srcNum4 % 1000) + " = " + secondSum);
+        System.out.println("Сумма цифр " + (srcNum4 / 1000) + " = " + leftSum +
+                ", а сумма цифр " + (srcNum4 % 1000) + " = " + rightSum);
         System.out.print("Число " + srcNum4 + " является ");
-        if (firstSum == secondSum) {
+        if (leftSum == rightSum) {
             System.out.println("счастливым");
         } else {
             System.out.println("несчастливым");
