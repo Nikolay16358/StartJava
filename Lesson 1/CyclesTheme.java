@@ -96,40 +96,38 @@ public class CyclesTheme {
             for (int j = 0; j < 10; j++) {
                 System.out.print('*');
             }
-
             System.out.println();
         }
 
         System.out.println();
-        int stringsNumber = 5;
+        int linesNumber = 5;
         int columnsNumber = 5;
-        while (stringsNumber >= 0) {
+        while (linesNumber >= 0) {
             while (columnsNumber > 0) {
                 System.out.print('#');
                 columnsNumber--;
             }
 
-            columnsNumber = stringsNumber - 1;
-            stringsNumber--;
+            columnsNumber = linesNumber - 1;
+            linesNumber--;
             System.out.println();
         }
 
-        stringsNumber = 0;
+        linesNumber = 0;
         columnsNumber = 0;
         do {
             do {
                 System.out.print('$');
                 columnsNumber++;
-            } while (columnsNumber <= stringsNumber && columnsNumber < 3);
+            } while (columnsNumber <= linesNumber && columnsNumber < 3);
             System.out.println();
-            stringsNumber++;
-            if (stringsNumber < 3) {
+            linesNumber++;
+            if (linesNumber < 3) {
                 columnsNumber = 0;
             } else {
-                columnsNumber = stringsNumber - 2;
+                columnsNumber = linesNumber - 2;
             }
-
-        } while (stringsNumber < 5);
+        } while (linesNumber < 5);
 
         System.out.println("\nЗадача 7. Отображение ASCII-символов");
         System.out.println("Dec Char");
@@ -148,15 +146,15 @@ public class CyclesTheme {
         System.out.println("\nЗадача 8. Проверка, является ли число палиндромом");
         int srcNum3 = 1_234_321;
         int copySrcNum3 = srcNum3;
-        int result = 0;
+        int reverseNumber = 0;
         while (copySrcNum3 > 0) {
             int digit = copySrcNum3 % 10;
             copySrcNum3 /= 10;
-            result = result * 10 + digit;
+            reverseNumber = reverseNumber * 10 + digit;
         }
 
         System.out.print("Число " + srcNum3);
-        if (result == srcNum3) {
+        if (reverseNumber == srcNum3) {
             System.out.println(" является палиндромом");
         } else {
             System.out.println(" не является палиндромом");
