@@ -2,7 +2,6 @@ public class JaegerTest {
 
     public static void main(String[] args) {
         Jaeger jaeger1 = new Jaeger();
-        Jaeger jaeger2 = new Jaeger("Coyote Tango", "Mark-1", "Japan", 85.34f, 2_312f, 5, 7, 4);
         jaeger1.setModelName("Cherno Alpha");
         jaeger1.setMark("Mark-1");
         jaeger1.setOrigin("Russia");
@@ -16,6 +15,8 @@ public class JaegerTest {
         jaeger1.setArmor(10);
         System.out.println("The first jaeger is from " + jaeger1.getOrigin() + 
                 ", his name is " + jaeger1.getModelName());
+
+        Jaeger jaeger2 = new Jaeger("Coyote Tango", "Mark-1", "Japan", 85.34f, 2_312f, 5, 7, 4);
         System.out.println("The second jaeger is from " + jaeger2.getOrigin() + 
                 ", his name is " + jaeger2.getModelName());
         System.out.println(jaeger1.getModelName() + " has " + jaeger1.getStrength() + " power");
