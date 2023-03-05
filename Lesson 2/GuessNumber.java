@@ -11,13 +11,12 @@ public class GuessNumber {
         this.player2 = player2;
     }
 
-    Scanner scanner = new Scanner(System.in);
-
-    public void startGame() {
+    public void start() {
+        Scanner scanner = new Scanner(System.in);
         int hiddenNumber = (int) (Math.random() * 100 + 1);
         player1.setNumber(0);
         player2.setNumber(0);
-        while (player1.getNumber() != hiddenNumber || player2.getNumber() != hiddenNumber) {
+        while (true) {
             System.out.println(player1.getName() + ", введите число: ");
             player1.setNumber(scanner.nextInt());
             if (hiddenNumber > player1.getNumber()) {
