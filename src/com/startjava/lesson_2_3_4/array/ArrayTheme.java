@@ -6,121 +6,114 @@ public class ArrayTheme {
 
     public static void main(String[] args) {
         System.out.println("Задача 1. Реверс значений массива");
-        int[] numbers1 = {5, 2, 1, 6, 4, 7, 3};
-        int[] numbers2 = new int[7];
-        int len1 = numbers1.length;
-        for (int i = 0; i < len1; i++) {
-            numbers2[i] = numbers1[len1 - 1 - i];
+        int[] numbers = {5, 2, 1, 6, 4, 7, 3};
+        System.out.print("Исходный массив: ");
+        printArray(numbers);
+        int len = numbers.length;
+        for (int i = 0; i < len / 2; i++) {
+            int temp = numbers[i];
+            numbers[i] = numbers[len - 1 - i];
+            numbers[len - 1 - i] = temp;
         }
 
-        System.out.print("Массив numbers1: ");
-        printArray(numbers1);
-        System.out.print("\nМассив numbers2: ");
-        printArray(numbers2);
+        System.out.print("\nИзмененный массив: ");
+        printArray(numbers);
 
         System.out.println("\n\nЗадача 2. Вывод произведения элементов массива");
-        int[] numbers3 = new int[10];
-        int len3 = numbers3.length;
-        for (int i = 0; i < len3; i++) {
-            numbers3[i] = i;
+        int[] singleDigits = new int[10];
+        len = singleDigits.length;
+        for (int i = 0; i < len; i++) {
+            singleDigits[i] = i;
         }
 
-        System.out.print("Произведение элементов массива numbers3 равно ");
+        System.out.print("Произведение элементов массива равно ");
         int multiplication = 1;
-        for (int i = 1; i < len3 - 1; i++) {
-            multiplication *= numbers3[i];
-            System.out.print((numbers3[i] < len3 - 2) ? numbers3[i] + " * " : numbers3[i]);
+        for (int i = 1; i < len - 1; i++) {
+            multiplication *= singleDigits[i];
+            System.out.print(singleDigits[i]);
+            System.out.print((singleDigits[i] < len - 2) ?  " * " : "");
         }
 
         System.out.println(" = " + multiplication);
-        System.out.print("Первый элемент массива numbers3 с индексом 0 равен " + numbers3[0] + ", а последний элемент " +
-                "массива с индексом 10 равен " + numbers3[len3 - 1]);
+        System.out.print("Первый элемент массива с индексом 0 равен " + singleDigits[0] + ", а последний элемент " +
+                "массива с индексом 10 равен " + singleDigits[len - 1]);
 
         System.out.println("\n\nЗадача 3. Удаление элементов массива");
-        double[] numbers4 = new double[15];
-        int len4 = numbers4.length;
-        for (int i = 0; i < len4; i++) {
-            numbers4[i] = Math.random();
+        double[] randomFractionalNumbers = new double[15];
+        len = randomFractionalNumbers.length;
+        for (int i = 0; i < len; i++) {
+            randomFractionalNumbers[i] = Math.random();
         }
 
-        int middleIndex = len4 / 2;
-        double middleNum = numbers4[middleIndex];
-        double[] numbers5 = new double[15];
-        System.arraycopy(numbers4, 0, numbers5, 0, 15);
-        for (int i = 0; i < len4; i++) {
-            if (numbers5[i] > middleNum) {
-                numbers5[i] = 0.0;
+        System.out.println("Исходный массив:");
+        printArrayIn2Lines(randomFractionalNumbers);
+
+        double middleCellNum = randomFractionalNumbers[len / 2];
+        int numberZeroCells = 0;
+        for (int i = 0; i < len; i++) {
+            if (randomFractionalNumbers[i] > middleCellNum) {
+                randomFractionalNumbers[i] = 0.0;
+                numberZeroCells++;
             }
         }
 
-        System.out.println("Исходный массив numbers4:");
-        printArrayIn2Lines(numbers4);
-        System.out.println("\n\nИзмененный массив numbers5:");
-        printArrayIn2Lines(numbers5);
-
-        int numberOfZeroCells = 0;
-        for (int i = 0; i < len4; i++) {
-            if (numbers5[i] == 0.0) {
-                numberOfZeroCells++;
-            }
-        }
-
-        System.out.println("\n\nКоличество обнуленных ячеек в массиве numbers5 равно: " + numberOfZeroCells);
+        System.out.println("\n\nИзмененный массив:");
+        printArrayIn2Lines(randomFractionalNumbers);
+        System.out.println("\n\nКоличество обнуленных ячеек в измененном массиве равно: " + numberZeroCells);
 
         System.out.println("\nЗадача 4. Вывод элементов массива лесенкой в обратном порядке");
-        char[] letters = new char[26];
-        int length = letters.length;
-        for (int i = 65, j = 0; i < 91; i++, j++) {
-            letters[j] = (char) i;
+        char[] englishAlphabet = new char[26];
+        len = englishAlphabet.length;
+        for (int i = 0; i < len; i++) {
+            englishAlphabet[i] = (char) ('A' + i);
         }
 
-        String charToString = Character.toString(letters[length - 1]);
-        for (int i = length - 1; i >= 0; i--) {
+        String charToString = Character.toString(englishAlphabet[len - 1]);
+        for (int i = len - 1; i >= 0; i--) {
             System.out.println(charToString);
             if (i > 0) {
-                charToString = charToString + "" + letters[i - 1];
+                charToString += englishAlphabet[i - 1];
             } else {
                 break;
             }
         }
 
         System.out.println("\nЗадача 5. Генерация уникальных чисел");
-        int[] numbers6 = new int[30];
-        int len6 = numbers6.length;
-        for (int i = 0; i < len6; i++) {
+        int[] randomIntegers = new int[30];
+        len = randomIntegers.length;
+        for (int i = 0; i < len; i++) {
             int randomNumber;
             do {
                 randomNumber = (int) (60 + Math.random() * 40);
-
-            } while (isUnique(numbers6, randomNumber));
-            numbers6[i] = randomNumber;
+            } while (isUnique(randomIntegers, randomNumber));
+            randomIntegers[i] = randomNumber;
         }
 
-        Arrays.sort(numbers6);
-        printArrayIn3Lines(numbers6);
+        Arrays.sort(randomIntegers);
+        printArrayIn3Lines(randomIntegers);
 
         System.out.println("\n\nЗадача 6. Копирование не пустых строк");
-        String[] strArr1 = {"    ", "AA", "", "BBB", "CC", "D", "    ", "E", "FF", "G", ""};
-        int length1 = strArr1.length;
-        int length2 = 0;
-        for (int i = 0; i < length1; i++) {
-            if (strArr1[i].isBlank() != true) {
-                length2 += 1;
+        String[] srcStrings = {"    ", "AA", "", "BBB", "CC", "D", "    ", "E", "FF", "G", ""};
+        len = srcStrings.length;
+        int lengthDestStrings = 0;
+        for (int i = 0; i < len; i++) {
+            if (!srcStrings[i].isBlank()) {
+                lengthDestStrings++;
             }
         }
 
-        String[] strArr2 = new String[length2];
-        for (int i = 0, j = 0; i < length1; i++) {
-            if (!strArr1[i].isBlank()) {
-                System.arraycopy(strArr1, i, strArr2, j, 1);
+        String[] destStrings = new String[lengthDestStrings];
+        for (int i = 0, j = 0; i < len; i++) {
+            if (!srcStrings[i].isBlank()) {
+                System.arraycopy(srcStrings, i, destStrings, j,1);
                 j++;
             }
         }
 
-        System.out.print("Первый массив strArr1: ");
-        printArray(strArr1);
-        System.out.print("\nВторой массив strArr2: ");
-        printArray(strArr2);
+        System.out.print("Первый массив: ");
+        printArray(srcStrings);
+        System.out.print("\nВторой массив: ");
+        printArray(destStrings);
     }
 
     private static void printArray(int[] array) {
