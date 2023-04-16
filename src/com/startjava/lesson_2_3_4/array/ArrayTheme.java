@@ -31,7 +31,7 @@ public class ArrayTheme {
         for (int i = 1; i < len - 1; i++) {
             multiplication *= singleDigits[i];
             System.out.print(singleDigits[i]);
-            System.out.print((singleDigits[i] < len - 2) ?  " * " : "");
+            System.out.print((singleDigits[i] < len - 2) ? " * " : "");
         }
 
         System.out.println(" = " + multiplication);
@@ -103,9 +103,20 @@ public class ArrayTheme {
         }
 
         String[] destStrings = new String[lengthDestStrings];
-        for (int i = 0, j = 0; i < len; i++) {
-            if (!srcStrings[i].isBlank()) {
-                System.arraycopy(srcStrings, i, destStrings, j,1);
+        int lengthCopiedElements = 0;
+        for (int i = 0, j = 0, k = 0; i < len; ) {
+            while (!srcStrings[i].isBlank()) {
+                lengthCopiedElements++;
+                i++;
+            }
+
+            if (!srcStrings[j].isBlank()) {
+                System.arraycopy(srcStrings, j, destStrings, k, lengthCopiedElements);
+                j += lengthCopiedElements;
+                k += lengthCopiedElements;
+                lengthCopiedElements = 0;
+            } else {
+                i++;
                 j++;
             }
         }
