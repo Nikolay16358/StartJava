@@ -10,55 +10,56 @@ public class ArrayTheme {
         System.out.print("Исходный массив: ");
         printArray(numbers);
         int len = numbers.length;
-        for (int i = 0; i < len / 2; i++) {
+        for (int i = 0; i < len / 2 + 1; i++) {
             int temp = numbers[i];
-            numbers[i] = numbers[len - 1 - i];
-            numbers[len - 1 - i] = temp;
+            len--;
+            numbers[i] = numbers[len];
+            numbers[len] = temp;
         }
 
         System.out.print("\nИзмененный массив: ");
         printArray(numbers);
 
         System.out.println("\n\nЗадача 2. Вывод произведения элементов массива");
-        int[] singleDigits = new int[10];
-        len = singleDigits.length;
+        int[] multipliers = new int[10];
+        len = multipliers.length;
         for (int i = 0; i < len; i++) {
-            singleDigits[i] = i;
+            multipliers[i] = i;
         }
 
         System.out.print("Произведение элементов массива равно ");
         int multiplication = 1;
         for (int i = 1; i < len - 1; i++) {
-            multiplication *= singleDigits[i];
-            System.out.print(singleDigits[i]);
-            System.out.print((singleDigits[i] < len - 2) ? " * " : "");
+            multiplication *= multipliers[i];
+            System.out.print(multipliers[i]);
+            System.out.print((multipliers[i] < len - 2) ? " * " : " = ");
         }
 
-        System.out.println(" = " + multiplication);
-        System.out.print("Первый элемент массива с индексом 0 равен " + singleDigits[0] + ", а последний элемент " +
-                "массива с индексом 10 равен " + singleDigits[len - 1]);
+        System.out.println(multiplication);
+        System.out.print("Первый элемент массива с индексом 0 равен " + multipliers[0] + ", а последний элемент " +
+                "массива с индексом 10 равен " + multipliers[len - 1]);
 
         System.out.println("\n\nЗадача 3. Удаление элементов массива");
-        double[] randomFractionalNumbers = new double[15];
-        len = randomFractionalNumbers.length;
+        double[] randomDoubles = new double[15];
+        len = randomDoubles.length;
         for (int i = 0; i < len; i++) {
-            randomFractionalNumbers[i] = Math.random();
+            randomDoubles[i] = Math.random();
         }
 
         System.out.println("Исходный массив:");
-        printArrayIn2Lines(randomFractionalNumbers);
+        printArrayIn2Lines(randomDoubles);
 
-        double middleCellNum = randomFractionalNumbers[len / 2];
+        double middleCellNumber = randomDoubles[len / 2];
         int numberZeroCells = 0;
         for (int i = 0; i < len; i++) {
-            if (randomFractionalNumbers[i] > middleCellNum) {
-                randomFractionalNumbers[i] = 0.0;
+            if (randomDoubles[i] > middleCellNumber) {
+                randomDoubles[i] = 0.0;
                 numberZeroCells++;
             }
         }
 
         System.out.println("\n\nИзмененный массив:");
-        printArrayIn2Lines(randomFractionalNumbers);
+        printArrayIn2Lines(randomDoubles);
         System.out.println("\n\nКоличество обнуленных ячеек в измененном массиве равно: " + numberZeroCells);
 
         System.out.println("\nЗадача 4. Вывод элементов массива лесенкой в обратном порядке");
@@ -79,45 +80,45 @@ public class ArrayTheme {
         }
 
         System.out.println("\nЗадача 5. Генерация уникальных чисел");
-        int[] randomIntegers = new int[30];
-        len = randomIntegers.length;
+        int[] uniqueNumbers = new int[30];
+        len = uniqueNumbers.length;
         for (int i = 0; i < len; i++) {
             int randomNumber;
             do {
                 randomNumber = (int) (60 + Math.random() * 40);
-            } while (isUnique(randomIntegers, randomNumber));
-            randomIntegers[i] = randomNumber;
+            } while (isUnique(uniqueNumbers, randomNumber));
+            uniqueNumbers[i] = randomNumber;
         }
 
-        Arrays.sort(randomIntegers);
-        printArrayIn3Lines(randomIntegers);
+        Arrays.sort(uniqueNumbers);
+        printArrayIn3Lines(uniqueNumbers);
 
         System.out.println("\n\nЗадача 6. Копирование не пустых строк");
         String[] srcStrings = {"    ", "AA", "", "BBB", "CC", "D", "    ", "E", "FF", "G", ""};
         len = srcStrings.length;
-        int lengthDestStrings = 0;
-        for (int i = 0; i < len; i++) {
-            if (!srcStrings[i].isBlank()) {
-                lengthDestStrings++;
+        int countNonBlankStrings = 0;
+        for (String strArr : srcStrings) {
+            if (!strArr.isBlank()) {
+                countNonBlankStrings++;
             }
         }
 
-        String[] destStrings = new String[lengthDestStrings];
-        int lengthCopiedElements = 0;
-        for (int i = 0, j = 0, k = 0; i < len; ) {
+        String[] destStrings = new String[countNonBlankStrings];
+        int tempLength = 0;
+        for (int i = 0, srcPos = 0, destPos = 0; i < len; ) {
             while (!srcStrings[i].isBlank()) {
-                lengthCopiedElements++;
+                tempLength++;
                 i++;
             }
 
-            if (!srcStrings[j].isBlank()) {
-                System.arraycopy(srcStrings, j, destStrings, k, lengthCopiedElements);
-                j += lengthCopiedElements;
-                k += lengthCopiedElements;
-                lengthCopiedElements = 0;
+            if (!srcStrings[srcPos].isBlank()) {
+                System.arraycopy(srcStrings, srcPos, destStrings, destPos, tempLength);
+                srcPos += tempLength;
+                destPos += tempLength;
+                tempLength = 0;
             } else {
                 i++;
-                j++;
+                srcPos++;
             }
         }
 
