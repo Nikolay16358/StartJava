@@ -10,10 +10,9 @@ public class ArrayTheme {
         System.out.print("Исходный массив: ");
         printArray(numbers);
         int len = numbers.length;
-        for (int i = 0; i < len / 2 + 1; i++) {
+        for (int i = 0; i <= len / 2; i++) {
             int temp = numbers[i];
-            len--;
-            numbers[i] = numbers[len];
+            numbers[i] = numbers[--len];
             numbers[len] = temp;
         }
 
